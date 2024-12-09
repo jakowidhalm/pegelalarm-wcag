@@ -1,4 +1,4 @@
-import { initChart as initAgChart } from './components/ag-charts.js';
+import { initChart } from './components/ag-charts.js';
 import { wpUtils } from './utils/utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	{...},
 	// 	{...}
 	// }]
+	const element = document.getElementById('myChart');
 	const data = wpUtils.generateData();
 
-	initAgChart(data, maxFill, yAxisMin, yAxisMax, title);
+	initChart(element, data, maxFill, yAxisMin, yAxisMax, title);
 });

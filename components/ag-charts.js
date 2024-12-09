@@ -1,6 +1,6 @@
 import { AgCharts, time } from 'ag-charts-community';
 import { AG_CHARTS_LOCALE_DE_DE } from 'ag-charts-locale';
-function initChart(data, maxFill, yAxisMin, yAxisMax, title) {
+function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
 	const options = {
 		// Chart Title
 		title: {
@@ -8,7 +8,7 @@ function initChart(data, maxFill, yAxisMin, yAxisMax, title) {
 			align: 'center',
 			verticalAlign: 'top',
 		},
-		container: document.getElementById('myChart'),
+		container: element,
 		data: data,
 		series: [
 			{
