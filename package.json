@@ -1,0 +1,23 @@
+{
+	"type": "module",
+	"devDependencies": {
+		"autoprefixer": "^10.4.19",
+		"prettier": "^3.2.5",
+		"rollup-plugin-copy": "^3.5.0",
+		"sass-embedded": "^1.78.0",
+		"vite": "^5.2.8"
+	},
+	"engines": {
+		"npm": ">=10.0.0 <10.999.999",
+		"node": ">=20.0.0 <20.999.999"
+	},
+	"scripts": {
+		"build": "npm run format && vite build --emptyOutDir",
+		"watch": "vite build --watch --emptyOutDir",
+		"format": "prettier --write  --list-different ."
+	},
+	"dependencies": {
+		"ag-charts-community": "^10.3.3",
+		"ag-charts-locale": "^10.3.3"
+	}
+}
