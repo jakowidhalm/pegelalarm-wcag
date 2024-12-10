@@ -1,4 +1,4 @@
-import { initChart } from './components/ag-charts.js';
+import { initChart, initChartTable } from './components/ag-charts.js';
 import { wpUtils } from './utils/utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	{...},
 	// 	{...}
 	// }]
-	const element = document.getElementById('myChart');
+	const cart = document.getElementById('myChart');
+	const table = document.getElementById('myTable');
 	const data = wpUtils.generateData();
 
-	initChart(element, data, maxFill, yAxisMin, yAxisMax, title);
+	initChart(cart, data, maxFill, yAxisMin, yAxisMax, title);
+	initChartTable(table, data);
 });

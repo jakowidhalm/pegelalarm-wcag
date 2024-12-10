@@ -1,6 +1,10 @@
 import { AgCharts, time } from 'ag-charts-community';
 import { AG_CHARTS_LOCALE_DE_DE } from 'ag-charts-locale';
 function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
+	if (!element) {
+		return;
+	}
+
 	const options = {
 		// Chart Title
 		title: {
@@ -18,6 +22,7 @@ function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
 				interpolation: {
 					type: 'smooth',
 				},
+				fill: '#2164B0',
 				tooltip: { renderer: renderer },
 			},
 		],
@@ -27,16 +32,21 @@ function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
 		legend: {
 			toggleSeries: false,
 			item: {
-				maxWidth: 130,
+				maxWidth: 230,
 				paddingX: 32,
 				paddingY: 8,
 				marker: {
 					padding: 8,
 				},
 				label: {
+					fontSize: 14,
+					fontWeight: 500,
 					formatter: ({ value }) => (value === 'height' ? 'Pegel in cm' : value),
 				},
 			},
+		},
+		tooltip: {
+			class: 'my-tooltip',
 		},
 		axes: [
 			{
@@ -90,6 +100,34 @@ function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
 	const chart = AgCharts.create(options);
 }
 
+function initChartTable(element, data) {
+	if (!element) {
+		return;
+	}
+
+	const table = document.createElement('table');
+	table.classList.add('table');
+
+	const thead = document.createElement('thead');
+	const tr = document.createElement('tr');
+	tr.innerHTML = '<th scope="col">Datum</th><th scope="col">Pegelstand</th>';
+	thead.appendChild(tr);
+	table.appendChild(thead);
+
+	const tbody = document.createElement('tbody');
+	data.forEach((item) => {
+		const tr = document.createElement('tr');
+
+		const date = item.date.getHours() + ':00 Uhr ' + item.date.getDate() + '.' + item.date.getMonth() + '.' + item.date.getFullYear();
+
+		tr.innerHTML = `<td>${date}</td><td>${item.height} cm</td>`;
+		tbody.appendChild(tr);
+	});
+	table.appendChild(tbody);
+
+	element.appendChild(table);
+}
+
 function renderer({ datum, xKey, yKey }) {
 	const date = datum[xKey].getHours() + ':00 Uhr ' + datum[xKey].getDate() + '.' + datum[xKey].getMonth() + '.' + datum[xKey].getFullYear();
 	return {
@@ -98,4 +136,4 @@ function renderer({ datum, xKey, yKey }) {
 	};
 }
 
-export { initChart };
+export { initChart, initChartTable };
