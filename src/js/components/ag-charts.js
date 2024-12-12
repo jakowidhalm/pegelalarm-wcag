@@ -1,17 +1,17 @@
 import { AgCharts, time } from 'ag-charts-community';
 import { AG_CHARTS_LOCALE_DE_DE } from 'ag-charts-locale';
-function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
+function initChart(element, data, maxFill, yAxisMin, yAxisMax) {
 	if (!element) {
 		return;
+	}
+	const title = 'Krems';
+	const titleElement = document.querySelector('.title .common-name');
+	if(titleElement) {
+		titleElement.textContent = title;
 	}
 
 	const options = {
 		// Chart Title
-		title: {
-			text: title,
-			align: 'center',
-			verticalAlign: 'top',
-		},
 		container: element,
 		data: data,
 		series: [
@@ -28,22 +28,6 @@ function initChart(element, data, maxFill, yAxisMin, yAxisMax, title) {
 		],
 		locale: {
 			localeText: AG_CHARTS_LOCALE_DE_DE,
-		},
-		legend: {
-			toggleSeries: false,
-			item: {
-				maxWidth: 230,
-				paddingX: 32,
-				paddingY: 8,
-				marker: {
-					padding: 8,
-				},
-				label: {
-					fontSize: 14,
-					fontWeight: 500,
-					formatter: ({ value }) => (value === 'height' ? 'Pegel in cm' : value),
-				},
-			},
 		},
 		tooltip: {
 			class: 'my-tooltip',

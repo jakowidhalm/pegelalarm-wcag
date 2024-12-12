@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const maxFill = 600;
 	const yAxisMax = 630;
 	const yAxisMin = 400;
-	const title = 'Pegelstand der vergangenen sieben Tage';
 
 	// Generate Data
 	// [{
@@ -18,6 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const table = document.getElementById('myTable');
 	const data = wpUtils.generateData();
 
-	initChart(cart, data, maxFill, yAxisMin, yAxisMax, title);
+	initChart(cart, data, maxFill, yAxisMin, yAxisMax);
 	initChartTable(table, data);
 });

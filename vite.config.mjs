@@ -14,6 +14,7 @@ export default defineConfig({
 		alias: {
 			'@scss': path.resolve(__dirname, './src/scss'),
 			'@js': path.resolve(__dirname, './src/js'),
+			'@fonts': path.resolve(__dirname, './src/fonts'),
 		},
 	},
 	css: {
